@@ -2,6 +2,13 @@ import torch
 import torch.nn as nn
 
 class Autoencoder(nn.Module):
+    """
+    Autoencoder class to be used for generative task.
+    
+    Input:  enc_length - the length of the encoding of the image 
+                         at the centre of the autoencoder. 
+   
+    """   
     def __init__(self, enc_length):
         super(Autoencoder, self).__init__()
         self.encoder = nn.Sequential(

@@ -5,6 +5,16 @@ import numpy as np
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 def train_epoch(model, data_ldr, opt, loss_fn):
+    """
+    Train individual epoch for autoencoder.
+    
+    Input:   model    - model to be trained
+             data_ldr - data loader
+             opt      - optimizer
+             loss_fn  - loss function
+                       
+    Returns: avg_loss - average loss for the epoch
+    """
     for batch_num, input_data in enumerate(data_ldr):
         loss_epoch = []
         opt.zero_grad()
@@ -23,6 +33,16 @@ def train_epoch(model, data_ldr, opt, loss_fn):
     return avg_loss
 
 def train_autoencoder(data_ldr, epochs, enc_length):
+    """
+    Trains autoencoder
+    
+    Input:   data_ldr   - torch data loader
+             epochs     - number of epochs
+             enc_length - encoding length at centre of autoencoder
+                       
+    Returns: model      - trained model
+             losses     - losses at each epoch
+    """   
     #Setup
     model = Autoencoder(enc_length).to(device)
     opt = torch.optim.Adam(model.parameters())
