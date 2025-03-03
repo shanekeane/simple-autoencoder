@@ -1,4 +1,4 @@
-# vanilla-GAN
+# simple-autoencoder
 Autoencoder used for basic image generation. Randomly chooses two samples from MNIST or Fashion MNIST and creates something "between" them. 
 
 # Description
